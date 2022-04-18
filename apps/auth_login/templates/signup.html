@@ -1,0 +1,45 @@
+{% extends 'component/body.html' %}
+{% load widget_tweaks %}
+
+{% block body %}
+<div class="login-box w-25 mx-auto mt-5 bg-dark rounded-3">
+    <div class="card card-outline card-primary bg-dark shadow-sm rounded-3">
+        <div class="card-header text-center text-light">
+            <a href="{% url 'customer_app:customer' %}" class="h1 text-light text-decoration-none">
+                <b>{% if request.GET.next != '/courier/' %}Customer{% else %}Courier{% endif %}</b>
+            </a>
+        </div>
+        <div class="card-body text-light">
+            <p class="login-box-msg">
+                {% if request.GET.next != '/courier/' %}Customer{% else %}Courier{% endif %}
+            </p>
+            <form action="." method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="input-group mb-3">
+                    {% render_field field|add_class:'form-control'|attr:'autofocus:on' placeholder=field.label %}
+                </div>
+                {% endfor %}
+                {% if error %}
+                <ul>
+                    {% for e in error %}
+                        {{e}}
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <div class="row p-2">
+                    <div class="col-12 d-flex p-1">
+                        <button type="submit" class="btn btn-primary btn-block w-100 mx-auto">
+                            <i class="bi bi-send-fill"></i>
+                            Sign In
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <p class="mb-0">
+                <a href="{% url 'auth:login' %}" class="text-center text-light text-decoration-none">Login</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

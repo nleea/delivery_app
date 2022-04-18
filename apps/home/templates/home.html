@@ -1,0 +1,35 @@
+{% extends 'component/body.html' %}
+
+{% block body %}
+<div class="row m-0 w-75 mx-auto my-5">
+    <div class="col-lg-12 mb-3">
+        <h1 class="text-center mt-5 mb-5">Welcome to fast parcel</h1>
+    </div>
+    <div class="col-lg-6">
+        <div class="card bg-dark shadow-lg">
+            <div class="card-body text-light">
+                <h5 class="card-title">Customer</h5>
+                <p class="card-text">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia rem tenetur sed
+                    alias architecto, aspernatur atque, dicta eligendi molestiae ipsum eius ullam ducimus ab minus.
+                    Neque quasi sint eius fuga.
+                </p>
+                <a href="{% url 'customer_app:customer' %}" class="btn btn-primary">Details</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card bg-dark shadow-lg">
+            <div class="card-body text-light">
+                <h5 class="card-title">Courier</h5>
+                <p class="card-text">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia rem tenetur sed
+                    alias architecto, aspernatur atque, dicta eligendi molestiae ipsum eius ullam ducimus ab minus.
+                    Neque quasi sint eius fuga.
+                </p>
+                <a href="{% url 'courier_app:courier' %}" class="btn btn-dark bg-primary shadow">Details</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
