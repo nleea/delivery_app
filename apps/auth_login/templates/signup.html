@@ -17,6 +17,7 @@
                 {% csrf_token %}
                 {% for field in form %}
                 <div class="input-group mb-3">
+                    <!-- <label for="id_{{field.name}}" class="form-label" >{{field.name}}</label> -->
                     {% render_field field|add_class:'form-control'|attr:'autofocus:on' placeholder=field.label %}
                 </div>
                 {% endfor %}

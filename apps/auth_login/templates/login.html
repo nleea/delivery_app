@@ -15,6 +15,7 @@
             </p>
             <form action="." method="post">
                 {% csrf_token %}
+                <input type="hidden" value="{{next}}" name="next">
                 <div class="input-group mb-3">
                     {% render_field form.username|add_class:'form-control'|attr:'autofocus:on' placeholder=form.username.label %}
                     <div class="input-group-append">
@@ -39,14 +40,16 @@
                         </button>
                     </div>
                 </div>
+                <p class="mb-1">
+                    <a href="#" class="text-light text-decoration-none">I forgot my password</a>
+                </p>
+                <p class="mb-0">
+                    <a href="{% url 'auth:signup' %}" class="text-center text-light text-decoration-none">Register a new
+                        membership</a>
+                </p>
+                <a href='{% url "social:begin" "facebook" %}'
+                    class="btn btn-outline-primary btn-block w-100 mt-2">Sign in with Facebook</a>
             </form>
-            <p class="mb-1">
-                <a href="#" class="text-light text-decoration-none">I forgot my password</a>
-            </p>
-            <p class="mb-0">
-                <a href="{% url 'auth:signup' %}" class="text-center text-light text-decoration-none">Register a new
-                    membership</a>
-            </p>
         </div>
     </div>
 </div>

@@ -41,8 +41,10 @@ INSTALLED_APPS = [
     'apps.home',
     'apps.courier',
     'apps.customer',
-    'apps.auth_login',
-    'widget_tweaks'
+    'widget_tweaks',
+    'social_django',
+    'apps.auth_login.apps.AuthConfig',
+    'bootstrap5'
 ]
 
 MIDDLEWARE = [
@@ -57,6 +59,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 
+# Authentication Backends
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.facebook.FacebookOAuth2'
+]
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -68,6 +77,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -131,3 +142,19 @@ LOGIN_REDIRECT_URL = '/home'
 LOGIN_URL = '/auth/login'
 
 LOGOUT_REDIRECT_URL = '/auth/login'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '350894640205146'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'a1a51336a96cd1cc7972c6d8a0d3409d'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'fields': 'id, name, email, age_range'
+}
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'neldecas12@gmail.com'
+EMAIL_HOST_PASSWORD = '1118873602'
+DEFAULT_FROM_EMAIL = 'Fast Parcel <no-reply@fastparcel.localhost>'

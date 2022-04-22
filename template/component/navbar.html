@@ -12,7 +12,7 @@
                 <a class="nav-link text-light" href="{% url 'courier_app:courier' %}">Courier</a>
             </div>
         </div>
-        {% if user != AnonymousUser %}
+        {% if request.user.is_authenticated %}
         <p class="text-light mx-2 my-2">{{user}}</p>
         {% endif %}
         <a class="nav-link text-light btn btn-danger" href="{% url 'auth:logout' %}">Logout</a>
