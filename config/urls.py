@@ -15,12 +15,27 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import redirect
+from django.conf import settings
+from django.conf.urls.static import static
+
+
+def redirect_function(request):
+    return redirect('/home')
+
 
 urlpatterns = [
+    path('', redirect_function),
     path('admin/', admin.site.urls),
     path('auth/', include('social_django.urls', namespace='social')),
     path('home/', include('apps.home.urls')),
     path('courier/', include('apps.courier.urls')),
     path('customer/', include('apps.customer.urls')),
-    path('auth/', include('apps.auth_login.urls'))
+    path('auth/', include('apps.auth_login.urls')),
+    # path('accounts/', include('django.contrib.auth.urls')),
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

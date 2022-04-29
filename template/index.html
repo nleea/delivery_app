@@ -24,6 +24,7 @@
         <div class="container-fluid body ">
             {% block body %}{% endblock %}
         </div>
+        {% include 'component/alert.html' %}
         {% include 'component/footer.html' %}
         {% block script %}{% endblock %}
     </main>

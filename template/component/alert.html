@@ -1,0 +1,13 @@
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success position-fixed bottom-0 start-0" role="alert" id="alert">
+    {{message}}
+</div>
+<script>
+    const alert_ = document.getElementById('alert')
+    setTimeout(() => {
+        alert_.style.display = 'none'
+    }, 3000);
+</script>
+{% endfor %}
+{% endif %}

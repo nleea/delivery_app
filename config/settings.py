@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'apps.customer.middleware.ProfileMiddleware'
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -132,6 +133,8 @@ STATICFILES_DIRS = [
     path.join(BASE_DIR, STATIC_URL)
 ]
 
+MEDIA_ROOT = path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
