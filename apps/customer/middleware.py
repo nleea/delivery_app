@@ -9,7 +9,6 @@ class ProfileMiddleware:  # este caso de middleware es para crear un customer ca
 
         if request.user.is_authenticated and not hasattr(request.user, 'customer'):
             Customer.objects.create(user=request.user)
-
         response = self.get_response(request)
 
         return response

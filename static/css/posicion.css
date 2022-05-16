@@ -4,7 +4,7 @@
         "body body body body body"
         "footer footer footer footer footer";
     grid-template-rows: 0.09fr 1.2fr 0.09fr;
-    height: 100vh;
+    height: 150vh;
     background-color: #333333;
 }
 
@@ -20,3 +20,10 @@
 .footer {
     grid-area: footer;
 }
+
+/* @media (min-height: 950px) {
+    .content_grid {
+        grid-template-rows: 0.09fr auto 0.09fr;
+        height: auto;
+    }
+} */
